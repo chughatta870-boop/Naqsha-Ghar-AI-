@@ -1,0 +1,20 @@
+{
+  "name": "Naqsha Ghar AI - House Map Generator",
+  "short_name": "Naqsha Ghar AI",
+  "description": "AI se apne ghar ka naksha auto-generate karein - Marla, Stories, Rooms select karke instant floor plan banayein",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f7f5",
+  "theme_color": "#1b6e3c",
+  "lang": "ur-PK",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "lifestyle"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ur-PK" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#1b6e3c">
+<title>Naqsha Ghar AI – House Map Generator</title>
+<meta name="description" content="AI se apne ghar ka naksha auto-generate karein - Marla, Stories, Rooms select karke instant Naqsha banayein">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">🏠</span>
+    <div>
+      <h1>Naqsha Ghar <span class="ai-badge">AI</span></h1>
+      <p class="tagline">Apna Ghar Ka Naksha Auto Generate Karein</p>
+    </div>
+  </div>
+  <button id="myDesignsBtn" class="icon-btn" title="Mere Naqshay">📁</button>
+</header>
+
+<main id="setupView">
+
+  <section class="card">
+    <h2>1️⃣ Plot Size</h2>
+    <label class="field-label">Marla Select Karein</label>
+    <div class="chip-row" id="marlaChips">
+      <button class="chip" data-marla="3">3 Marla</button>
+      <button class="chip" data-marla="5">5 Marla</button>
+      <button class="chip" data-marla="7">7 Marla</button>
+      <button class="chip active" data-marla="10">10 Marla</button>
+      <button class="chip" data-marla="14">14 Marla</button>
+      <button class="chip" data-marla="20">1 Kanal</button>
+      <button class="chip" data-marla="custom">Custom</button>
+    </div>
+    <p class="hint" id="areaHint">Plot Area: ~2250 sq.ft (10 Marla)</p>
+  </section>
+
+  <section class="card">
+    <h2>2️⃣ Length / Width – Front / Back / Left / Right</h2>
+    <p class="hint">Plot ki har side ki lambai feet mein set karein</p>
+    <div class="dim-grid">
+      <div class="dim-box">
+        <label>Front (Width)</label>
+        <div class="stepper">
+          <button class="step-btn" data-dim="front" data-op="-">−</button>
+          <input type="number" id="dimFront" value="30" min="10" max="150">
+          <button class="step-btn" data-dim="front" data-op="+">+</button>
+        </div>
+      </div>
+      <div class="dim-box">
+        <label>Back (Width)</label>
+        <div class="stepper">
+          <button class="step-btn" data-dim="back" data-op="-">−</button>
+          <input type="number" id="dimBack" value="30" min="10" max="150">
+          <button class="step-btn" data-dim="back" data-op="+">+</button>
+        </div>
+      </div>
+      <div class="dim-box">
+        <label>Left (Length)</label>
+        <div class="stepper">
+          <button class="step-btn" data-dim="left" data-op="-">−</button>
+          <input type="number" id="dimLeft" value="75" min="10" max="200">
+          <button class="step-btn" data-dim="left" data-op="+">+</button>
+        </div>
+      </div>
+      <div class="dim-box">
+        <label>Right (Length)</label>
+        <div class="stepper">
+          <button class="step-btn" data-dim="right" data-op="-">−</button>
+          <input type="number" id="dimRight" value="75" min="10" max="200">
+          <button class="step-btn" data-dim="right" data-op="+">+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3️⃣ Stories (Manzilein)</h2>
+    <div class="chip-row" id="storyChips">
+      <button class="chip active" data-story="1">Ground Only</button>
+      <button class="chip" data-story="2">G + 1</button>
+      <button class="chip" data-story="3">G + 2</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>4️⃣ Rooms Select Karein</h2>
+    <div class="room-list" id="roomList">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <button id="generateBtn" class="primary-btn">✨ AI Naksha Generate Karein</button>
+</main>
+
+<main id="resultView" class="hidden">
+  <div class="result-toolbar">
+    <button id="backBtn" class="icon-btn">⬅️ Wapis</button>
+    <div class="floor-tabs" id="floorTabs"></div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="mapCanvas"></canvas>
+  </div>
+
+  <div class="action-row">
+    <button id="downloadBtn" class="action-btn">⬇️ Download</button>
+    <button id="shareBtn" class="action-btn">📤 Share</button>
+    <button id="saveBtn" class="action-btn">💾 Save</button>
+    <button id="regenBtn" class="action-btn">🔄 Regenerate</button>
+  </div>
+
+  <div class="legend" id="legend"></div>
+</main>
+
+<main id="savedView" class="hidden">
+  <div class="result-toolbar">
+    <button id="backFromSavedBtn" class="icon-btn">⬅️ Wapis</button>
+    <h2 style="margin:0;">Mere Naqshay</h2>
+  </div>
+  <div id="savedList" class="saved-list"></div>
+</main>
+
+<footer class="watermark">M Ijaz • GHS 124/NB • Naqsha Ghar AI</footer>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
